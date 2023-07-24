@@ -1,0 +1,245 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap");
+@import "mockups";
+@import "mixin";
+@import "variable";
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  min-height: 100vh;
+  position: relative;
+  font-size: 1.8rem;
+  font-family: "Space Grotesk";
+}
+img {
+  max-width: 100%;
+}
+// main {
+//   opacity: .3;
+// }
+.btn{
+  width: 100%;
+  padding: .9em 0;
+  font-size: 1em;
+  border: none;
+  border-radius: .5em;
+  letter-spacing: 1px;
+  transition: .3s ;
+  margin-top:1.1em;
+
+  &-primary{
+    background-color: $Verydarkviolet;
+    color: $White;
+    &:hover{
+      background-color: $Darkgrayishviolet;
+    }
+
+  }
+  &:hover{
+    cursor: pointer;
+  }
+}
+.validate{
+  font-size: .6em;
+  color: $Red;
+  display: none;
+  margin-top: .3rem;
+  &--absolute{
+    position: absolute;
+    bottom: -2rem;
+    left: 0;
+  }
+}
+.flex {
+  &-rs {
+    @include minQuery(
+      flex-direction,
+      column,
+      (
+        864px: row,
+      )
+    );
+  }
+  &-sb {
+    justify-content: space-between;
+  }
+  &-column {
+    flex-direction: column;
+  }
+}
+
+[class*="overlay"] {
+  z-index: 1;
+  border-radius: 0.5em;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.label {
+  display: block;
+  font-size: 0.65em;
+  font-weight: 500;
+  letter-spacing: 2px;
+  margin-bottom: 0.7rem;
+}
+
+input[type="text"] {
+  padding: 1rem 1.6rem;
+  font-size: 1em;
+  border-radius: 0.6em;
+  border: 1px solid $Lightgrayishviolet;
+  width: 100%;
+  background-color: white;
+  letter-spacing: 2px;
+
+  &::placeholder {
+    color: $Darkgrayishviolet;
+  }
+  &:focus{
+    outline: none;
+    border: 1px solid hsl(249, 99%, 64%);
+  }
+  &.wrong{
+    border: none;
+    outline: 1px solid $Red;
+  }
+}
+.input__group {
+  margin-bottom: 2.65rem;
+}
+
+.wrapper {
+  align-items: center;
+  height: 100vh;
+  background: white url("./../images/bg-main-desktop.png") no-repeat left;
+  background-size: 33% 100%;
+  @media (max-width: 865px) {
+    background: white url("./../images/bg-main-mobile.png") no-repeat top;
+    background-size: 100% 33%;
+  }
+  .container {
+    margin: 0 auto;
+    width: min(105rem, 73%);
+    gap: 10rem;
+    justify-content: space-between;
+    @include fluid-type(font-size, 90rem, 144rem, .9rem, 1.8rem);
+
+    &__card {
+      height: auto;
+      flex-direction: column;
+      @include fluid-type(gap, 90rem, 144rem, 1rem, 3.5rem);
+      left: -3rem;
+    }
+    &__form {
+      width: 37rem;
+      align-items: center;
+      margin-right: 3.4rem;
+
+      .bottom {
+        gap: 2rem;
+        & > div {
+          flex: 50%;
+        }
+        .date-form {
+          gap: 1rem;
+        }
+      }
+    }
+
+    .card {
+      p{
+        letter-spacing: 2px;
+      }
+      &--number {
+        margin-bottom: 6.5%;
+        font-size: 1.6em;
+        word-spacing: 3px;
+      }
+      &--name{
+        font-size: .75em;
+
+      }
+      &--logo {
+        width: 4.66em;
+      }
+      &__front {
+        &__overlay {
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          padding: 1.66em 2em 1.44em 1.77em;
+          justify-content: space-between;
+        }
+      }
+      &__back {
+        left: 20%;
+        &__overlay {
+          top: 44%;
+          right: 12%;
+          .card--CVC{
+            font-size: .9em;
+          }
+        }
+      }
+    }
+    .response__container{
+      align-items: center;
+      gap: 1.4rem;
+      width: 100%;
+      p{
+        font-size: .9em;
+        margin-bottom: 1.5rem;
+      }
+      h1{
+        font-size: 2.7rem;
+      }
+      & > img{
+        margin-bottom: 1.5rem;
+      }
+    }
+    @media (max-width: 864px) {
+      align-items: center;
+      gap: 0;
+      font-size: 1rem;
+
+      &__card {
+        left: -10%;
+        top: 2vh;
+        flex-direction: column-reverse;
+     
+      }
+      &__form {
+        position: relative;
+        top: -4rem;
+        font-size: 1.5rem;
+        margin-right: 0;
+        width: min(37rem, 110%);
+
+        .bottom {
+          gap: 1rem;
+          &.date-form{
+            gap: .5rem;
+          }
+        }
+      }
+      .card {
+        &__front {
+          top: -8rem;
+          z-index: 1;
+        }
+      }
+      .card__front--bg,
+      .card__back--bg {
+        max-width: 28.5rem;
+      }
+    }
+  }
+}

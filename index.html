@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Interactive card details form</title>
+    <script src="./js/main.js" defer></script>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+
+    <main class="main">
+      <div class="wrapper flex">
+        <div class="container flex flex-rs">
+          <div class="container__card relative flex">
+            <div class="card card__front relative">
+              <img
+                src="./images/bg-card-front.png"
+                alt=""
+                class="card__front--bg"
+              />
+              <div
+                class="card__front__overlay absolute text-white flex flex-column"
+              >
+                <div class="card__header">
+                  <img src="./images/card-logo.svg" alt="card-logo" class="card--logo" />
+                </div>
+                <div class="card__body">
+                  <p class="card--number" value="">0000 0000 0000 0000</p>
+                  <div class="card--bottom flex flex-sb">
+                    <p class="card--name uppercase">Jane Appleseed</p>
+                    <small class="card--date"
+                      ><span class="card_date">00</span>/<span class="card_date"
+                        >00</span
+                      ></small
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card card__back relative">
+              <img
+                src="./images/bg-card-back.png"
+                alt=""
+                class="card__back--bg"
+              />
+              <div class="card__back__overlay absolute text-white">
+                <p class="card--CVC">000</p>
+              </div>
+            </div>
+          </div>
+          <div class="container__form flex">
+            <form class="form__container bg-white ">
+              <div class="input__group">
+                <label for="card_name" class="uppercase label"
+                  >Cardholder Name</label
+                >
+                <input
+                  type="text"
+                  name="card-name"
+                  id="card_name"
+                  placeholder="e.g. Jane Appleseed"
+                />
+                <span class="validate">Salah broku</span>
+              </div>
+              <div class="input__group">
+                <label for="card_number" class="label uppercase"
+                  >Card Number</label
+                >
+                <input
+                  type="text"
+                  value=""
+                  name="cardNumber"
+                  id="card_number"
+                  placeholder="e.g. 1234 5678 9123 0000"
+                  maxlength="19"
+                />
+                <span class="validate">Salah broku</span>
+              </div>
+              <div class="input__group bottom flex">
+                <div class="date--in">
+                  <label for="month-in" class="label uppercase"
+                    >Exp. Date (MM/YY)</label
+                  >
+                  <div class="date-form flex">
+                    <input
+                      type="text"
+                      name="month"
+                      id="month-in"
+                      placeholder="MM"
+                      class="card_dateIn"
+                      maxlength="2"
+                    />
+                    <input
+                      type="text"
+                      name="year"
+                      id="year-in"
+                      placeholder="YY"
+                      class="card_dateIn"
+                      maxlength="2"
+                    />
+                  </div>
+                  <span class="validate">Salah broku</span>
+                </div>
+                <div class="CVC--in">
+                  <label for="CVC-in" class="label uppercase">CVC </label>
+                  <input
+                    type="text"
+                    id="CVC--in"
+                    placeholder="e.g. 123"
+                    maxlength="3"
+                  />
+                  <span class="validate">Salah broku</span>
+                </div>
+              </div>
+              <input type="submit" value="Confirm" class="btn btn-primary" />
+            </form>
+            <div class="response__container  flex-column" style="display: none;">
+              <img src="./images/icon-complete.svg" alt="succes">
+              <h1 class="uppercase">thank you!</h1>
+              <p class="text-Darkgrayishviolet">We've added your card details</p>
+              <button class="btn btn-primary" id="btn-continue">Continue</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+$displays : flex grid block none;
+
+@each $display in $displays {
+    .#{$display}{
+        display: $display;
+    }
+
+}
+$colors : (
+    "white" : hsl(0, 0%, 100%),
+    "verydarkviolet" : hsl(278, 68%, 11%),
+    "Darkgrayishviolet": hsl(279, 6%, 55%)
+);
+$positions : relative absolute ;
+
+@each $position in $positions {
+    .#{$position}{
+        position:  $position;
+    }
+}
+
+@mixin minQuery($propertyName , $defaultValue , $breakpoint){
+    #{$propertyName} : $defaultValue;
+    @each $break ,$value in $breakpoint {
+        @media (min-width : $break ){
+            #{$propertyName} : $value;
+        }
+    } 
+}
+
+@each $color , $value in $colors {
+    .text{
+        &-#{$color}{
+            color: $value;
+        }
+    }
+    .bg{
+        &-#{$color}{
+            background-color: $value;
+        }
+    }
+}
+
+
+@mixin fluid-type($propertyName ,$min-vw, $max-vw, $min-value, $max-value) {
+	$factor: calc(1 / ($max-vw - $min-vw)) * calc($max-value - $min-value);
+	$calc-value: unquote('#{ $min-value - ($min-vw * $factor) } + #{ 100vw * $factor }');
+	 #{$propertyName} : clamp(#{if($min-value > $max-value, $max-value, $min-value)}, #{$calc-value}, #{if($min-value > $max-value, $min-value, $max-value)});
+}
